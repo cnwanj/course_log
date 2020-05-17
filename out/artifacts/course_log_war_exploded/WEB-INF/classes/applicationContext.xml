@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context.xsd
+      http://www.springframework.org/schema/aop
+      http://www.springframework.org/schema/aop/spring-aop.xsd
+      http://www.springframework.org/schema/tx
+      http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:annotation-config/>
+    <!--开启注解扫描-->
+    <context:component-scan base-package="org.gxuwz.course_log"/>
+    <!--使用dbcp数据库连接池-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/course_log"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+    <!--创建sessionFactory对象-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!--配置hibernate信息-->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+            </props>
+        </property>
+        <!--引入映射文件-->
+        <property name="mappingResources">
+            <list>
+                <value>org/gxuwz/course_log/model/entity/hbm/Teacher.hbm.xml</value>
+                <value>org/gxuwz/course_log/model/entity/hbm/Department.hbm.xml</value>
+                <value>org/gxuwz/course_log/model/entity/hbm/User.hbm.xml</value>
+                <value>org/gxuwz/course_log/model/entity/hbm/Classes.hbm.xml</value>
+                <value>org/gxuwz/course_log/model/entity/hbm/Course.hbm.xml</value>
+                <value>org/gxuwz/course_log/model/entity/hbm/Student.hbm.xml</value>
+                <value>org/gxuwz/course_log/model/entity/hbm/Log.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+    <!--配置HibernateTemplate模板，用于操作数据库-->
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <!--配置事务管理器-->
+    <bean id="hibernateTransactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <!--配置事务通知，保持事务的一致性，如果出错，就将整个事务回滚-->
+    <tx:advice id="txAdvice" transaction-manager="hibernateTransactionManager">
+        <tx:attributes>
+            <tx:method name="find*" read-only="true"/>
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+    <!--开启注解-->
+    <tx:annotation-driven transaction-manager="hibernateTransactionManager"/>
+
+    <!--aop代理设置-->
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice"
+                     pointcut="execution(* org.gxuwz.course_log.service.impl.*ServiceImpl.*(..))"/>
+    </aop:config>
+
+</beans>

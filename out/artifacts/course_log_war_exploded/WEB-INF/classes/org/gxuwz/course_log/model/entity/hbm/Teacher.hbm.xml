@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.gxuwz.course_log.model.entity.Teacher" table="sys_teacher">
+        <id name="teaId" column="teaId"/>
+        <property name="teaName" column="teaName"/>
+        <property name="teaPwd" column="teaPwd"/>
+        <property name="depId" column="depId"/>
+        <property name="teaPhone" column="teaPhone"/>
+        <property name="teaTags" column="tea_tags"/>
+    </class>
+</hibernate-mapping>

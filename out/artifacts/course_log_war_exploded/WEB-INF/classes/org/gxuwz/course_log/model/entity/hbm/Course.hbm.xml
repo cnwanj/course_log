@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.gxuwz.course_log.model.entity.Course" table="sys_course">
+        <id name="couId" column="cou_id"/>
+        <property name="couName" column="cou_name"/>
+        <property name="teaName" column="tea_name"/>
+        <property name="couYear" column="cou_year"/>
+        <property name="couTerm" column="cou_term"/>
+    </class>
+</hibernate-mapping>

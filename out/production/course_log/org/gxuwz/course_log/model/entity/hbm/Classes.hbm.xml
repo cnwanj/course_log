@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.gxuwz.course_log.model.entity.Classes" table="sys_classes">
+        <id name="claId" column="cla_id"/>
+        <property name="claName" column="cla_name"/>
+        <property name="depId" column="dep_id"/>
+        <property name="claMajor" column="cla_major"/>
+        <property name="claGrade" column="cla_grade"/>
+    </class>
+</hibernate-mapping>

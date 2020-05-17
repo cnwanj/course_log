@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.gxuwz.course_log.model.entity.Department" table="sys_department">
+        <id name="depId" column="dep_id"/>
+        <property name="depName" column="dep_name"/>
+    </class>
+</hibernate-mapping>

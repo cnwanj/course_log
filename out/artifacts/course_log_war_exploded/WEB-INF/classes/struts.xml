@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="demo1" extends="json-default" namespace="/">
+
+        <action name="editUser" class="org.gxuwz.course_log.action.UserAction" method="editUser">
+            <result type="json">
+                <param name="root">teacher</param>
+            </result>
+        </action>
+        <action name="loginAction" class="org.gxuwz.course_log.action.LoginAction" method="loginAction">
+            <result type="json">
+                <param name="root">tea</param>
+            </result>
+        </action>
+        <action name="searchTeacher" class="org.gxuwz.course_log.action.TeacherAction" method="searchTeacher">
+            <result type="json">
+                <param name="root">teachers</param>
+            </result>
+        </action>
+
+        <action name="searchDepartment" class="org.gxuwz.course_log.action.DepartmentAction" method="searchDepartment">
+            <result type="json">
+                <param name="root">departments</param>
+            </result>
+        </action>
+
+        <action name="searchClasses" class="org.gxuwz.course_log.action.ClassesAction" method="searchClasses">
+            <result type="json">
+                <param name="root">claList</param>
+            </result>
+        </action>
+
+        <action name="searchCourse" class="org.gxuwz.course_log.action.CourseAction" method="searchCourse">
+            <result type="json">
+                <param name="root">couList</param>
+            </result>
+        </action>
+
+        <action name="findStudent" class="org.gxuwz.course_log.action.StudentAction" method="findStudent">
+            <result type="json">
+                <param name="root">dataTable</param>
+            </result>
+        </action>
+        <action name="getOneStudent" class="org.gxuwz.course_log.action.StudentAction" method="getOneStudent">
+            <result type="json">
+                <param name="root">claList</param>
+            </result>
+        </action>
+        <action name="searchStudent" class="org.gxuwz.course_log.action.StudentAction" method="searchStudent">
+            <result type="json">
+                <param name="root">stuList</param>
+            </result>
+        </action>
+        <action name="searchBtnStudent" class="org.gxuwz.course_log.action.StudentAction" method="searchBtnStudent">
+            <result type="json">
+                <param name="root">dataTable</param>
+            </result>
+        </action>
+
+        <action name="findClaLog" class="org.gxuwz.course_log.action.LogAction" method="findClaLog">
+            <result type="json">
+                <param name="root">claList</param>
+            </result>
+        </action>
+        <action name="editLogAllLog" class="org.gxuwz.course_log.action.LogAction" method="editLogAllLog">
+            <result name="json">
+                <param name="root">target</param>
+            </result>
+        </action>
+        <action name="searchByClaIdStudent" class="org.gxuwz.course_log.action.LogAction" method="searchByClaIdStudent">
+            <result type="json">
+                <param name="root">stuList</param>
+            </result>
+        </action>
+        <action name="searchBtnByClaIdStudent" class="org.gxuwz.course_log.action.LogAction"
+                method="searchBtnByClaIdStudent">
+            <result type="json">
+                <param name="root">dataTable</param>
+            </result>
+        </action>
+        <action name="randomDrawLog" class="org.gxuwz.course_log.action.LogAction" method="randomDrawLog">
+            <result type="json">
+                <param name="root">stu</param>
+            </result>
+        </action>
+        <action name="findAllListLog" class="org.gxuwz.course_log.action.LogAction" method="findAllListLog">
+            <result type="json">
+                <param name="root">dataTable</param>
+            </result>
+        </action>
+        <action name="save_*" class="org.gxuwz.course_log.action.{1}Action" method="save{1}">
+            <result type="json">
+                <param name="root">target</param>
+            </result>
+        </action>
+
+        <!--学生信息模块-->
+        <action name="*_student" class="org.gxuwz.course_log.action.StudentAction" method="{1}">
+            <result type="json">
+                <param name="root">res</param>
+            </result>
+        </action>
+
+        <!--课堂考勤模块-->
+        <action name="*_log" class="org.gxuwz.course_log.action.LogAction" method="{1}">
+            <result type="json">
+                <param name="root">res</param>
+            </result>
+        </action>
+
+        <action name="*_*" class="org.gxuwz.course_log.action.{2}Action" method="{1}{2}">
+            <!--ajax传值-->
+            <result type="json">
+                <param name="root">target</param>
+            </result>
+            <result name="login">/login.jsp</result>
+            <result name="user_edit">views/user/user/user_edit.jsp</result>
+            <result name="teacher_list">views/user/teacher/teacher_list.jsp</result>
+            <result name="teacher_edit">views/user/teacher/teacher_edit.jsp</result>
+            <result name="dep_list">views/user/department/dep_list.jsp</result>
+            <result name="dep_edit">views/user/department/dep_edit.jsp</result>
+            <result name="classes_list">views/user/classes/classes_list.jsp</result>
+            <result name="classes_edit">views/user/classes/classes_edit.jsp</result>
+            <result name="course_list">views/user/course/course_list.jsp</result>
+            <result name="course_edit">views/user/course/course_edit.jsp</result>
+            <result name="student_list">views/user/student/student_list.jsp</result>
+            <result name="logAll_list">/views/teacher/log/logAll_list.jsp</result>
+            <result name="logRandom_list">/views/teacher/log/logRandom_list.jsp</result>
+            <result name="log_record">/views/teacher/log/log_record.jsp</result>
+        </action>
+
+    </package>
+</struts>

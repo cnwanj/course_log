@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.gxuwz.course_log.model.entity.Student" table="sys_student">
+        <id name="stuId" column="stu_id"/>
+        <property name="stuPwd" column="stu_pwd"/>
+        <property name="stuName" column="stu_name"/>
+        <property name="stuSex" column="stu_sex"/>
+        <property name="stuAddress" column="stu_address"/>
+        <property name="stuPhone" column="stu_phone"/>
+        <property name="claId" column="cla_id"/>
+        <property name="logStatus" column="log_status"/>
+        <property name="logArrive" column="log_Arrive"/>
+        <property name="logLeave" column="log_leave"/>
+        <property name="logLate" column="log_late"/>
+        <property name="logAbsent" column="log_absent"/>
+        <property name="logDate" column="log_date"/>
+    </class>
+</hibernate-mapping>

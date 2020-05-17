@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.gxuwz.course_log.model.entity.Log" table="sys_log">
+        <id name="logId" column="log_id"/>
+        <property name="claId" column="cla_id"/>
+        <property name="logCount" column="log_count"/>
+        <property name="logArrive" column="log_arrive"/>
+        <property name="logLeave" column="log_leave"/>
+        <property name="logLate" column="log_late"/>
+        <property name="logAbsent" column="log_absent"/>
+        <property name="logDate" column="log_date"/>
+    </class>
+</hibernate-mapping>

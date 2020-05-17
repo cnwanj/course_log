@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="course_log:war">
+    <output-path>D:/java项目/javaWeb项目/大三上学期</output-path>
+    <root id="archive" name="course_log_war.war">
+      <element id="artifact" artifact-name="course_log:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="antlr-2.7.7" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
